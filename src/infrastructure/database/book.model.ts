@@ -15,7 +15,6 @@ const BookSchema = new Schema<Book>({
 });
 
 
-BookSchema.index({ isbn: 1 });
 BookSchema.index({ titulo: 'text', resumo: 'text' });
 
 export const BookModel = mongoose.model<Book>('Book', BookSchema);
