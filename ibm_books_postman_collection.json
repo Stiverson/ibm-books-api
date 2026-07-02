@@ -1,0 +1,76 @@
+{
+  "info": {
+    "name": "IBM Books E-commerce API",
+    "description": "Collection de testes automatizada para a API de catálogo de livros, incluindo exemplos de paginação, filtros parciais e busca por ID.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "2. Listar Livros (Paginação Padrão)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/livros?page=1&limit=10",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["livros"],
+          "query": [
+            { "key": "page", "value": "1" },
+            { "key": "limit", "value": "10" }
+          ]
+        },
+        "description": "Retorna a primeira página contendo 10 livros."
+      }
+    },
+    {
+      "name": "3. Buscar Livros (Filtro Avançado)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/livros?titulo=clean&sort=anoPublicacao",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["livros"],
+          "query": [
+            { "key": "titulo", "value": "clean" },
+            { "key": "sort", "value": "anoPublicacao" }
+          ]
+        },
+        "description": "Filtra livros contendo 'clean' no título, ordenados pelo ano de publicação."
+      }
+    },
+    {
+      "name": "4. Buscar Livro por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/livros/6a467c90d5622fae7aa0e099",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["livros", "6a467c90d5622fae7aa0e099"]
+        },
+        "description": "Busca os detalhes de um exemplar. IMPORTANTE: Como o banco é MongoDB, o ID não é um número simples (como 1 ou 2), mas sim um ObjectId hexadecimal de 24 caracteres. Substitua o ID da URL por um válido retornado na listagem."
+      }
+    }
+  ]
+}
